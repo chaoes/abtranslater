@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="countryfrom">
+        <item>自动检测:auto</item>
+        <item>中文:zh</item>
+        <item>英文:en</item>
+        <item>粤语:yue</item>
+        <item>文言文:wyw</item>
+        <item>日语:jp</item>
+        <item>韩语:kor</item>
+        <item>法语:fra</item>
+        <item>西班牙语:spa</item>
+        <item>泰语:th</item>
+        <item>阿拉伯语:ara</item>
+        <item>俄语:ru</item>
+        <item>葡萄牙语:pt</item>
+        <item>德语:de</item>
+        <item>意大利语:it</item>
+        <item>希腊语:el</item>
+        <item>荷兰语:nl</item>
+        <item>波兰语:pl</item>
+        <item>保加利亚语:bul</item>
+        <item>爱沙尼亚语:est</item>
+        <item>丹麦语:dan</item>
+        <item>芬兰语:fin</item>
+        <item>捷克语:cs</item>
+        <item>罗马尼亚语:rom</item>
+        <item>斯洛文尼亚语:slo</item>
+        <item>瑞典语:swe</item>
+        <item>匈牙利语:hu</item>
+        <item>繁体中文:cht</item>
+        <item>越南语:vie</item>
+    </string-array>
+    <string-array name="countryto">
+        <item>中文:zh</item>
+        <item>英文:en</item>
+        <item>粤语:yue</item>
+        <item>文言文:wyw</item>
+        <item>日语:jp</item>
+        <item>韩语:kor</item>
+        <item>法语:fra</item>
+        <item>西班牙语:spa</item>
+        <item>泰语:th</item>
+        <item>阿拉伯语:ara</item>
+        <item>俄语:ru</item>
+        <item>葡萄牙语:pt</item>
+        <item>德语:de</item>
+        <item>意大利语:it</item>
+        <item>希腊语:el</item>
+        <item>荷兰语:nl</item>
+        <item>波兰语:pl</item>
+        <item>保加利亚语:bul</item>
+        <item>爱沙尼亚语:est</item>
+        <item>丹麦语:dan</item>
+        <item>芬兰语:fin</item>
+        <item>捷克语:cs</item>
+        <item>罗马尼亚语:rom</item>
+        <item>斯洛文尼亚语:slo</item>
+        <item>瑞典语:swe</item>
+        <item>匈牙利语:hu</item>
+        <item>繁体中文:cht</item>
+        <item>越南语:vie</item>
+    </string-array>
+</resources>

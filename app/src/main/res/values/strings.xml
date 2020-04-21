@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ABTranslater</string>
+    <string name="about">about</string>
+    <string name="btntran">trans</string>
+    <string name="btncpy">copy</string>
+    <string name="btnpst">paste</string>
+    <string name="btnclr">clear</string>
+    <string name="ywint">input</string>
+    <string name="fyint">translation</string>
+    <string name="copyok">copied</string>
+    <string name="apikey">Set API</string>
+    <string name="id">ID</string>
+    <string name="key">KEY</string>
+    <string name="saveapi">SAVE MY API</string>
+    <string name="resetapi">USE DEFAULT API</string>
+    <string name="please">public api are limited,click me to apply your own api</string>
+    <string name="helpurl">https://jingyan.baidu.com/article/3f16e00305bb552591c10304.html</string>
+</resources>
