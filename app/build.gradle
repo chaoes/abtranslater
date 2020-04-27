@@ -9,7 +9,6 @@ android {
             dirs 'libs'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -20,7 +19,6 @@ android {
         targetSdkVersion 29
         versionCode 2004227
         versionName "1.10"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

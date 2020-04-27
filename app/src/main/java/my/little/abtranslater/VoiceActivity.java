@@ -115,7 +115,7 @@ public class VoiceActivity extends AppCompatActivity {
                         Log.d("BB","youjieguo");
                         vtext.setText("");
                         vtext.setText(recognitionResult.getTransResult());
-                        Snackbar.make(coordinatorLayout,recognitionResult.getTransResult(),Snackbar.LENGTH_SHORT).show();
+//                        Snackbar.make(coordinatorLayout,recognitionResult.getTransResult(),Snackbar.LENGTH_SHORT).show();
                     } else { // 翻译出错
                         Snackbar.make(coordinatorLayout,recognitionResult.getErrorMsg(),Snackbar.LENGTH_SHORT).show();
                     }
