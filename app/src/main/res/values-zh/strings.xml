@@ -16,4 +16,9 @@
     <string name="resetapi">使用默认API</string>
     <string name="please">默认API有使用次数上限，点我申请自己的API</string>
     <string name="helpurl">https://jingyan.baidu.com/article/3f16e00305bb552591c10304.html</string>
+    <string name="voice_permissions_remind">需要录音权限</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="holdbtn">按住说话</string>
+    <string name="voice_trans">语音翻译</string>
 </resources>

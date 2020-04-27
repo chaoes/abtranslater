@@ -49,6 +49,7 @@ import my.little.abtranslater.utils.ClipBoardUtil;
 import my.little.abtranslater.utils.baiduapi.Trans;
 
 public class MainActivity extends AppCompatActivity {
+    int selfid;
     String fromh;
     String toh;
     String id;
@@ -76,12 +77,12 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navgation);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawerlayout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.nav_app_bar_open_drawer_description,R.string.nav_app_bar_open_drawer_description);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_app_bar_open_drawer_description, R.string.nav_app_bar_open_drawer_description);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        SharedPreferences sp = this.getSharedPreferences("api",MODE_PRIVATE);
+        SharedPreferences sp = this.getSharedPreferences("api", MODE_PRIVATE);
         Properties properties = new Properties();
 
         try {
@@ -90,17 +91,19 @@ public class MainActivity extends AppCompatActivity {
             Log.d("BB", e.toString());
         }
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("default_id",properties.getProperty("default_id"));
-        editor.putString("default_key",properties.getProperty("default_key"));
+        editor.putString("default_id", properties.getProperty("default_id"));
+        editor.putString("default_key", properties.getProperty("default_key"));
         editor.commit();
-        if ((sp.getString("id",null)!= null)&&(sp.getString("key",null)!=null)){
-            id = sp.getString("id",null);
-            key = sp.getString("key",null);
+        if ((sp.getString("id", null) != null) && (sp.getString("key", null) != null)) {
+            id = sp.getString("id", null);
+            key = sp.getString("key", null);
+            selfid=1;
         } else {
-            id = sp.getString("default_id",null);
-            key = sp.getString("default_key",null);
+            id = sp.getString("default_id", null);
+            key = sp.getString("default_key", null);
+            selfid=0;
         }
-        Log.d("BB","id"+sp.getString("id",null)+"key"+sp.getString("key",null));
+        Log.d("BB", "id" + sp.getString("id", null) + "key" + sp.getString("key", null));
         if (properties.getProperty("baiduapi_host") == null) {
             finish();
         } else {
@@ -147,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String str = output.getText().toString();
                 ClipBoardUtil.write(str);
-                Snackbar.make(coordinatorLayout,R.string.copyok,Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(coordinatorLayout, R.string.copyok, Snackbar.LENGTH_SHORT).show();
             }
         });
         input.addTextChangedListener(new TextWatcher() {
@@ -163,10 +166,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().trim()!=""){
+                if (s.toString().trim() != "") {
                     btn_trans.setColorFilter(getResources().getColor(R.color.focus));
                     btn_clear.setColorFilter(getResources().getColor(R.color.focus));
-                }else {
+                } else {
                     btn_trans.setColorFilter(getResources().getColor(R.color.unfocus));
                     btn_clear.setColorFilter(getResources().getColor(R.color.unfocus));
                 }
@@ -186,9 +189,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().trim()!=""){
+                if (s.toString().trim() != "") {
                     btn_copy.setColorFilter(getResources().getColor(R.color.focus));
-                }else {
+                } else {
                     btn_copy.setColorFilter(getResources().getColor(R.color.unfocus));
                 }
             }
@@ -196,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
         input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if((event!=null&&event.getKeyCode() == KeyEvent.KEYCODE_ENTER)||actionId== EditorInfo.IME_ACTION_SEARCH){
+                if ((event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) || actionId == EditorInfo.IME_ACTION_SEARCH) {
                     btn_trans.performClick();
                 }
                 return false;
@@ -222,12 +225,12 @@ public class MainActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                                 String textfinal = "";
-                                ArrayList<HashMap<String,String>> array = toWord.getTrans_result();
+                                ArrayList<HashMap<String, String>> array = toWord.getTrans_result();
                                 if (toWord != null) {
-                                    Log.d("BB", toWord.getError_code()+toWord.getError_msg());
+                                    Log.d("BB", toWord.getError_code() + toWord.getError_msg());
                                     if (toWord.getTrans_result() != null) {
 //                                        if (toWord == null || toWord.getTrans_result() == null)
-                                            Log.d("BB", "???");
+                                        Log.d("BB", "???");
                                         for (HashMap<String, String> hashMap : array) {
                                             textfinal = textfinal + hashMap.get("dst") + "\n";
                                         }
@@ -235,12 +238,12 @@ public class MainActivity extends AppCompatActivity {
                                         msg.what = 1;
                                         msg.obj = textfinal;
                                         handler.sendMessage(msg);
-                                    }else {
-                                        if(toWord.getError_code()!=null){
+                                    } else {
+                                        if (toWord.getError_code() != null) {
                                             Message msg2 = Message.obtain();
-                                            msg2.what=0;
-                                            msg2.obj=toWord.getError_msg();
-                                            Log.d("BB","code:"+toWord.getError_code()+"msg;"+toWord.getError_msg());
+                                            msg2.what = 0;
+                                            msg2.obj = toWord.getError_msg();
+                                            Log.d("BB", "code:" + toWord.getError_code() + "msg;" + toWord.getError_msg());
                                             handler.sendMessage(msg2);
                                         }
                                     }
@@ -257,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 fromh = countryfrom.getSelectedItem().toString().split(":")[1];
-                if(position>0){
+                if (position > 0) {
                     btn_change.setColorFilter(getResources().getColor(R.color.focus));
                 } else {
                     btn_change.setColorFilter(getResources().getColor(R.color.unfocus));
@@ -296,15 +299,30 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.setapi:
-                        Intent intent = new Intent(MainActivity.this,ApiActivity.class);
+                        Intent intent = new Intent(MainActivity.this, ApiActivity.class);
                         startActivity(intent);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.about:
-                        Intent intent1 = new Intent(MainActivity.this,AboutActivity.class);
+                        Intent intent1 = new Intent(MainActivity.this, AboutActivity.class);
                         startActivity(intent1);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.govoice:
+                        if(selfid==1) {
+                            Intent voiceIntent = new Intent(MainActivity.this, VoiceActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("id", id);
+                            bundle.putString("key", key);
+                            voiceIntent.putExtra("idkey", bundle);
+                            startActivity(voiceIntent);
+                        }else {
+                            Toast.makeText(MainActivity.this,"请先申请api",Toast.LENGTH_SHORT).show();
+                            Intent intent3 = new Intent(MainActivity.this, ApiActivity.class);
+                            startActivity(intent3);
+                        }
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }
@@ -316,13 +334,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences sp = this.getSharedPreferences("api",MODE_PRIVATE);
-        if ((sp.getString("id",null)!= null)&&(sp.getString("key",null)!=null)){
-            id = sp.getString("id",null);
-            key = sp.getString("key",null);
+        SharedPreferences sp = this.getSharedPreferences("api", MODE_PRIVATE);
+        if ((sp.getString("id", null) != null) && (sp.getString("key", null) != null)) {
+            id = sp.getString("id", null);
+            key = sp.getString("key", null);
+            selfid=1;
         } else {
-            id = sp.getString("default_id",null);
-            key = sp.getString("default_key",null);
+            id = sp.getString("default_id", null);
+            key = sp.getString("default_key", null);
+            selfid=0;
         }
         trans = new Trans(id, key, host);
 
@@ -337,19 +357,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    Handler handler = new Handler(){
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            if(msg.what==1){
+            if (msg.what == 1) {
                 String finaltext = (String) msg.obj;
                 output.setText(finaltext);
-            }else if(msg.what==0){
-                Snackbar.make(coordinatorLayout,(String)msg.obj,Snackbar.LENGTH_SHORT).show();
+            } else if (msg.what == 0) {
+                Snackbar.make(coordinatorLayout, (String) msg.obj, Snackbar.LENGTH_SHORT).show();
             }
         }
     };
-
 
 
 }

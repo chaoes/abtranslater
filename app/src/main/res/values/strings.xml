@@ -15,4 +15,11 @@
     <string name="resetapi">USE DEFAULT API</string>
     <string name="please">public api are limited,click me to apply your own api</string>
     <string name="helpurl">https://jingyan.baidu.com/article/3f16e00305bb552591c10304.html</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="voice_permissions_remind">need permissions to get voice</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="holdbtn">hold to speak</string>
+    <string name="voice_trans">Voice Trans</string>
 </resources>

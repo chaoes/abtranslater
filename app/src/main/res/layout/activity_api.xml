@@ -32,6 +32,7 @@
         app:layout_constraintRight_toLeftOf="@id/idin"
         app:layout_constraintBottom_toTopOf="@id/keykab"
         app:layout_constraintBottom_toBottomOf="@id/idin"
+        android:layout_marginLeft="5dp"
         />
     <TextView
         android:id="@+id/keykab"
@@ -43,6 +44,7 @@
         app:layout_constraintRight_toLeftOf="@id/keyin"
         app:layout_constraintTop_toBottomOf="@id/idlab"
         app:layout_constraintBottom_toBottomOf="@id/keyin"
+        android:layout_marginLeft="5dp"
         />
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/idin"
@@ -82,6 +84,14 @@
         android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/reset"
         android:layout_margin="10dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="#FF0000"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:text="如何开启语音翻译功能：\n 登录百度翻译api网站->管理控制台->总览->开通其他服务->语音翻译sdk"
+        app:layout_constraintTop_toBottomOf="@id/pask"
+        android:textSize="20sp"
+        android:layout_margin="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

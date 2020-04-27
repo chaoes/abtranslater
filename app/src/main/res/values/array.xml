@@ -61,4 +61,10 @@
         <item>繁体中文:cht</item>
         <item>越南语:vie</item>
     </string-array>
+    <string-array name="voicefrom">
+        <item>英文:en</item>
+        <item>中文:zh</item>
+        <item>日语:jp</item>
+        <item>粤语:yue</item>
+    </string-array>
 </resources>
